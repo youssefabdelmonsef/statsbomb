@@ -4,7 +4,9 @@ const getValue = (o, sortKey) => sortKey ? o[sortKey] : o
 
 const sort = (list, sortKey) => {
   // SHOULD IMPLEMENT
-  return list;
+  return list.sort( (a, b) => {
+    return (a[sortKey] || a) - (b[sortKey] || b);
+  });
 };
 
 const findIndex = (list, sortKey) => value => {
