@@ -49,7 +49,7 @@ describe('List', () => {
     expect(actual).toEqual(expected)
   });
 
-  fit('should findIndex of b at list a', () => {
+  it('should findIndex of b at list a', () => {
     const list = List({ initial: [1, 2, 3, 4], initialOrder: true  });
     const expected = 2;
     const actual = list.findIndex(3);
@@ -57,7 +57,7 @@ describe('List', () => {
     expect(actual).toEqual(expected);
   });
 
-  fit('should findIndex of b at list a if array of objects', () => {
+  it('should findIndex of b at list a if array of objects', () => {
     const list = List({
       sortKey: 'value',
       initial: [
@@ -75,12 +75,35 @@ describe('List', () => {
   });
 
   it('should insert b into list a', () => {
-    const list = List({ initial: [1, 2, 3, 4], initialOrder: true  })
+    const list = List({ initial: [1, 2, 3, 4], initialOrder: true  });
     const expected = [1, 2, 3, 4, 5];
-    const actual = list.insert(5).items
+    const actual = list.insert(5).items;
 
-    expect(actual).toEqual(expected)
-  })
+    expect(actual).toEqual(expected);
+  });
+
+  it('should insert object into list a', () => {
+    const list = List({
+      sortKey: 'value',
+      initial: [
+        {value: 1},
+        {value: 2},
+        {value: 3},
+        {value: 4}
+      ],
+      initialOrder: true
+    });
+    const expected = [
+      {value: 1},
+      {value: 2},
+      {value: 3},
+      {value: 4},
+      {value: 5},
+    ];
+    const actual = list.insert({value: 5}).items;
+
+    expect(actual).toEqual(expected);
+  });
 
   it('should remove b from list a', () => {
     const list = List({ initial: [1, 2, 3, 4], initialOrder: true  })
