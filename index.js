@@ -1,6 +1,7 @@
 import { pipe, always, applySpec } from 'ramda';
 import { mergeSort } from './helper-functions/merge-sort.js';
 import { binarySearch } from './helper-functions/binary-search.js';
+import { insertSorted } from './helper-functions/insert-sorted.js';
 
 const sort = (list, sortKey) => {
   // SHOULD IMPLEMENT
@@ -15,6 +16,7 @@ const findIndex = (list, sortKey) => value => {
 
 const insert = (list, sortKey, item) => {
   // SHOULD IMPLEMENT a preserving order insertion
+  insertSorted(list, list.length, item)
   return list;
 }
 
