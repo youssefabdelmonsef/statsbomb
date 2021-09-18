@@ -20,7 +20,7 @@ const insert = (list, sortKey, item) => {
 
 const remove = (list, sortKey, value) => {
   // SHOULD OPTIMIZE
-  return list.filter(i => getValue(i) !== value);
+  return list.filter(i => getValue(i, sortKey) !== value);
 }
 
 export const List = ({ sortKey, initial, initialOrder}) => {
