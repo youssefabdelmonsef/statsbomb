@@ -14,7 +14,8 @@ const findIndex = (list, sortKey) => value => {
 
 const insert = (list, sortKey, item) => {
   // SHOULD OPTIMIZE
-  return [...list, item];
+  list = [...list, item];
+  return sort(list, sortKey)
 }
 
 const remove = (list, sortKey, value) => {

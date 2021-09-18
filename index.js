@@ -1,5 +1,6 @@
 import { pipe, always, applySpec } from 'ramda';
-import { mergeSort } from './helper.js';
+import { mergeSort } from './helper-functions/merge-sort.js';
+import { binarySearch } from './helper-functions/binary-search.js';
 
 const sort = (list, sortKey) => {
   // SHOULD IMPLEMENT
@@ -7,8 +8,8 @@ const sort = (list, sortKey) => {
 };
 
 const findIndex = (list, sortKey) => value => {
-  // SHOULD IMPLEMENT
-  return -1;
+  // list = sort(list)
+  return binarySearch(list, value, sortKey);
 }
 
 
