@@ -1,5 +1,12 @@
-const getValue = (o, sortKey) => sortKey ? o[sortKey] : o
+import {getValue } from './common.js';
 
+/**
+ * merge sort has better performance than in naive.js
+ * @param {*} left 
+ * @param {*} right 
+ * @param {*} sortKey string
+ * @returns 
+ */
 function merge(left, right, sortKey) {
     let arr = []
     // Break out of loop if any one of the array gets empty
@@ -14,17 +21,17 @@ function merge(left, right, sortKey) {
     }
     // Concatenating the leftover elements
     // (in case we didn't go through the entire left or right array)
-    return [ ...arr, ...left, ...right ]
-  }
-  
+    return [...arr, ...left, ...right]
+}
+
 export function mergeSort(array, sortKey) {
     const half = array.length / 2;
-    
+
     // Base case or terminating case
-    if(array.length < 2){
-      return array;
+    if (array.length < 2) {
+        return array;
     }
-    
+
     const left = array.splice(0, half);
     return merge(mergeSort(left, sortKey), mergeSort(array, sortKey), sortKey);
-  }
+}
