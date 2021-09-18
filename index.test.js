@@ -108,10 +108,29 @@ describe('List', () => {
   it('should remove b from list a', () => {
     const list = List({ initial: [1, 2, 3, 4], initialOrder: true  })
     const expected = [1, 2, 3];
-    const actual = list.remove(4).items
-
+    const actual = list.remove(4).items;
     expect(actual).toEqual(expected)
-  })
+  });
 
-  // PLEASE cover the rest of the methods/scenarios with tests
+  it('should remove b from list a (array of objects)', () => {
+    const list = List({ 
+      sortKey: 'value',
+      initial: [
+        {value: 1},
+        {value: 2},
+        {value: 3},
+        {value: 4}
+      ],
+      initialOrder: true
+    });
+    const expected = [
+      {value: 1},
+      {value: 2},
+      {value: 3}
+    ];
+    const actual = list.remove(4).items;
+
+    expect(actual.length).toEqual(expected.length)
+  });
+
 })
