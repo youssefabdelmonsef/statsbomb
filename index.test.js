@@ -9,7 +9,7 @@ describe('List', () => {
     expect(actual).toEqual(expected)
   })
 
-  fit('should sort initial list items', () => {
+  it('should sort initial list items', () => {
     const list = List({ initial: [4, 3, -1, 1, 2, 5, 0] })
     const expected = [-1, 0, 1, 2, 3, 4, 5];
     const actual = list.items
@@ -17,7 +17,7 @@ describe('List', () => {
     expect(actual).toEqual(expected)
   });
 
-  fit('should sort initial list items a if initial is array of objects', () => {
+  it('should sort initial list items a if initial is array of objects', () => {
     const list = List({sortKey: 'value', initial: [
       {value: 4},
       {value: 3},
@@ -47,7 +47,32 @@ describe('List', () => {
     const actual = list.items
 
     expect(actual).toEqual(expected)
-  })
+  });
+
+  fit('should findIndex of b at list a', () => {
+    const list = List({ initial: [1, 2, 3, 4], initialOrder: true  });
+    const expected = 2;
+    const actual = list.findIndex(3);
+
+    expect(actual).toEqual(expected);
+  });
+
+  fit('should findIndex of b at list a if array of objects', () => {
+    const list = List({
+      sortKey: 'value',
+      initial: [
+        {value: 1},
+        {value: 2},
+        {value: 3},
+        {value: 4}
+      ],
+      initialOrder: true
+    });
+    const expected = 3;
+    const actual = list.findIndex(4);
+
+    expect(actual).toEqual(expected);
+  });
 
   it('should insert b into list a', () => {
     const list = List({ initial: [1, 2, 3, 4], initialOrder: true  })
@@ -61,14 +86,6 @@ describe('List', () => {
     const list = List({ initial: [1, 2, 3, 4], initialOrder: true  })
     const expected = [1, 2, 3];
     const actual = list.remove(4).items
-
-    expect(actual).toEqual(expected)
-  })
-
-  it('should findIndex of b at list a', () => {
-    const list = List({ initial: [1, 2, 3, 4], initialOrder: true  })
-    const expected = 2;
-    const actual = list.findIndex(3)
 
     expect(actual).toEqual(expected)
   })
