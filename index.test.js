@@ -9,13 +9,37 @@ describe('List', () => {
     expect(actual).toEqual(expected)
   })
 
-  it('should sort initial list items', () => {
+  fit('should sort initial list items', () => {
     const list = List({ initial: [4, 3, -1, 1, 2, 5, 0] })
     const expected = [-1, 0, 1, 2, 3, 4, 5];
     const actual = list.items
 
     expect(actual).toEqual(expected)
-  })
+  });
+
+  fit('should sort initial list items a if initial is array of objects', () => {
+    const list = List({sortKey: 'value', initial: [
+      {value: 4},
+      {value: 3},
+      {value: -1},
+      {value: 1},
+      {value: 2},
+      {value: 5},
+      {value: 0}
+    ] });
+    const expected = [
+      {value: -1},
+      {value: 0},
+      {value: 1},
+      {value: 2},
+      {value: 3},
+      {value: 4},
+      {value: 5}
+    ];
+    const actual = list.items;
+
+    expect(actual).toEqual(expected);
+  });
 
   it('should sort initial list items', () => {
     const list = List({ initial: [100, -100, 10, 9, 200, -300] })
